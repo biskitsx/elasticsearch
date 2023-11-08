@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "54ae7592-4c75-42f8-af53-39b2de281d1b",
+		"name": "elasticsearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28147911"
+	},
+	"item": [
+		{
+			"name": "count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:9200/old_books/_count"
+			},
+			"response": []
+		},
+		{
+			"name": "mock data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/init"
+			},
+			"response": []
+		},
+		{
+			"name": "insert data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"sugar new\",\n    \"author\": \"gene\",\n    \"genre\": \"Science\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/insert?index=books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"insert"
+					],
+					"query": [
+						{
+							"key": "index",
+							"value": "books"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/search?q=Rustic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Rustic"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/books/_doc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Slim Shady\",\n  \"author\": \"Eminem\",\n  \"genre\": \"z\",\n  \"published_date\": \"1900-04-10\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9200/books/_doc"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/books/_search?pretty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"size\": 100,\n  \"query\": {\n    \"match\": {\n        \"title\": \"slim\"\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/books/_search?pretty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"books",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/books/_search?pretty Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"size\": 100,\n  \"query\": {\n    \"match\": {\n        \"title\": \"slim\"\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/books/_search?pretty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"books",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
